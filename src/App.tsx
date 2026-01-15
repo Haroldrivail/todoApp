@@ -73,7 +73,7 @@ function App() {
   const finishSelectedTodos = () => {
     setTodos(todos.filter((todo) => !selectedTodo.has(todo.id)));
     setSelectedTodo(new Set());
-  }
+  };
 
   return (
     <div className="flex justify-center">
@@ -95,7 +95,10 @@ function App() {
             <option value="Moyenne">Moyenne</option>
             <option value="Basse">Basse</option>
           </select>
-          <button onClick={addTodo} className="btn btn-sm md:btn-md btn-primary">
+          <button
+            onClick={addTodo}
+            className="btn btn-sm md:btn-md btn-primary"
+          >
             Ajouter
           </button>
         </div>
@@ -104,7 +107,7 @@ function App() {
             <div className="flex justify-center md:justify-start flex-wrap gap-4">
               <button
                 className={`btn btn-sm md:btn-md btn-soft ${
-                  filter === "Tous" ? "btn-primary" : ""
+                  filter === "Tous" ? "btn-secondary" : ""
                 }`}
                 onClick={() => setFilter("Tous")}
               >
@@ -112,7 +115,7 @@ function App() {
               </button>
               <button
                 className={`btn btn-sm md:btn-md btn-soft ${
-                  filter === "Urgente" ? "btn-primary" : ""
+                  filter === "Urgente" ? "btn-secondary" : ""
                 }`}
                 onClick={() => setFilter("Urgente")}
               >
@@ -120,7 +123,7 @@ function App() {
               </button>
               <button
                 className={`btn btn-sm md:btn-md btn-soft ${
-                  filter === "Moyenne" ? "btn-primary" : ""
+                  filter === "Moyenne" ? "btn-secondary" : ""
                 }`}
                 onClick={() => setFilter("Moyenne")}
               >
@@ -128,7 +131,7 @@ function App() {
               </button>
               <button
                 className={`btn btn-sm md:btn-md btn-soft ${
-                  filter === "Basse" ? "btn-primary" : ""
+                  filter === "Basse" ? "btn-secondary" : ""
                 }`}
                 onClick={() => setFilter("Basse")}
               >
@@ -165,7 +168,9 @@ function App() {
                   <Construction className="w-40 h-40 text-primary" />
                 </div>
                 <div className="text-sm font-semibold mt-2">
-                  Aucune tâche à afficher
+                  {filter === "Tous"
+                    ? "Aucune tâche à afficher"
+                    : `Aucune tâche ${filter.toLowerCase()} à afficher`}
                 </div>
               </div>
             )}
